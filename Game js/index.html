@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Practical</title>
+    <style>
+      body {
+        background-color: rgb(174, 231, 166);
+        background-image: url(./dice-B5mdRR0-600.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        color: brown;
+        font-size: 36px;
+        margin-top: 0;
+      }
+
+      #input {
+        text-align: center;
+        background-color: rgb(165, 235, 196);
+        color: rgb(95, 58, 12);
+        width: 250px;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        font-size: 24px;
+        border: none;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      #but {
+        background-color: yellowgreen;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      #output {
+        background-color: oldlace;
+        padding: 20px;
+        font-size: 20px;
+        width: 300px;
+        height: 150px;
+        margin: 0 auto;
+        border: none;
+        border-radius: 10px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Guess What Number I am Thinking</h1>
+      <input type="text" id="input" />
+      <br /><br />
+      <button id="but">Guess</button>
+      <br /><br />
+      <textarea id="output" rows="4" cols="50"></textarea>
+    </div>
+
+    <script>
+      document.getElementById("but").onclick = function () {
+        var randomnumber = Math.floor(Math.random() * 11); // Generate a random number between 0 and 10
+        var inputNumber = parseInt(document.getElementById("input").value); // Get the value from the input and convert it to an integer
+        var outputText = ""; // Initialize output text
+
+        if (inputNumber === randomnumber) {
+          outputText = "Well Done!!"; // If the guessed number is correct
+          document.getElementById("output").style.backgroundImage =
+            "url('./images.png')"; // Set background image to the win image
+        } else {
+          outputText =
+            "Your Guess Is Incorrect. I think the number is " + randomnumber; // If the guessed number is incorrect
+          document.getElementById("output").style.backgroundImage =
+            "url('Untitled.png')"; // Set background image to the lose image
+        }
+
+        // Display the output text in the textarea
+        document.getElementById("output").value = outputText;
+      };
+    </script>
+  </body>
+</html>
